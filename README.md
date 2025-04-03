@@ -4,6 +4,8 @@ This project focuses on understanding the oral microbiome in individuals who use
 
 The **R Package – OralMicrobiomeSubstanceUse**:
 This package provides tools to analyze oral microbiome data, clean and process sequence data, run BLAST comparisons, and generate taxonomic visualizations. It allows researchers to compare microbial profiles between substance users and non-users, and among different types of substances, using either their own data or publicly available datasets.
+**direct link to R Package**: https://github.com/Maryam-hkiabi/OralMicrobiomeSubstanceUse
+
 
 The **Interactive Dashboard (this repository)**:
 This front-end web dashboard presents a collection of reviewed studies that include associated sequence data related to the oral microbiome in substance users. Users can filter articles based on the microbial species studied, substance type, and microbial abundance patterns (e.g., higher/lower abundance). The dashboard also includes visualizations and a **direct link to the R Shiny app version** for dynamic exploration.
