@@ -2,7 +2,11 @@ $(document).ready(function () {
   $.get('data/associated_data_clean.csv', function (csv) {
     const data = Papa.parse(csv, { header: true }).data;
 
-    // Populate filters
+    // Clear old filters and table content
+    $('#species-filter').empty().append('<option value="">All</option>');
+    $('#substance-filter').empty().append('<option value="">All</option>');
+
+    // Build filter options
     const speciesSet = new Set();
     const substanceSet = new Set();
 
@@ -31,7 +35,7 @@ $(document).ready(function () {
             <td>${row["Species studied"]}</td>
             <td>${row["substance studied"]}</td>
             <td>${row["sample collection source"]}</td>
-            <td>${row["what sequenced"]}</td>
+            <td>${row["what sequenced_y"]}</td>
             <td>${row["Higher abundance"]}</td>
             <td>${row["lower abundance"]}</td>
             <td>${row["No difference"]}</td>
@@ -44,10 +48,9 @@ $(document).ready(function () {
       $('#data-table').DataTable();
     }
 
-    // Initial full table
-    populateTable(data);
+    populateTable(data); // Load full table initially
 
-    // Filter logic
+    // Add event listeners to filters
     $('#species-filter, #substance-filter').on('change', function () {
       const selectedSpecies = $('#species-filter').val();
       const selectedSubstance = $('#substance-filter').val();
