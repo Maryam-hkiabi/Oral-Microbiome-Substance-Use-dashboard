@@ -1,11 +1,11 @@
 $(document).ready(function () {
   const csvURL = "https://raw.githubusercontent.com/Maryam-hkiabi/Oral-Microbiome-Substance-Use-dashboard/main/data/associated_data_clean.csv";
 
-  Papa.parse(csvURL, {
-    download: true,
-    header: true,
-    complete: function(results) {
-      const data = results.data;
+  Papa.parse('https://raw.githubusercontent.com/Maryam-hkiabi/Oral-Microbiome-Substance-Use-dashboard/refs/heads/main/data/associated_data_clean.csv', {
+  download: true,
+  header: true,
+  complete: function(results) {
+    const data = results.data;
 
       // Clear filters
       $('#species-filter').empty().append('<option value="">All</option>');
