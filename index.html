@@ -1,0 +1,120 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oral Microbiome Dashboard</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdn.plot.ly/plotly-latest.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      background: #f5f7fa;
+      margin: 40px;
+      color: #333;
+    }
+    h1 {
+      text-align: center;
+      margin-bottom: 20px;
+    }
+    .filters {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .filters select {
+      margin: 0 10px;
+      padding: 6px;
+      border-radius: 6px;
+      border: 1px solid #ccc;
+    }
+    #data-table {
+      width: 100%;
+      background: white;
+      border-radius: 10px;
+      overflow: hidden;
+      box-shadow: 0 0 10px rgba(0,0,0,0.05);
+    }
+    .visualizations {
+      display: flex;
+      flex-wrap: wrap;
+      justify-content: space-around;
+      margin: 30px 0;
+    }
+    .plot {
+      width: 45%;
+      min-width: 300px;
+      margin-bottom: 40px;
+    }
+    .about {
+      background: #fff;
+      border-radius: 10px;
+      padding: 20px;
+      max-width: 900px;
+      margin: 40px auto;
+      box-shadow: 0 0 10px rgba(0,0,0,0.1);
+    }
+  </style>
+</head>
+<body>
+  <div class="about">
+    <h2>About This Project</h2>
+    <p>This dashboard was created by <strong>Maryam Hasanzadehkiabi</strong> to support research into the oral microbiome of individuals who use substances. It complements the <a href="https://github.com/Maryam-hkiabi/OralMicrobiomeSubstanceUse" target="_blank">OralMicrobiomeSubstanceUse R package</a>, which helps researchers compare microbial profiles across substance types and identify microbial species that are more or less abundant.</p>
+    <p>This dashboard displays articles that contain associated sequence data from repositories like NCBI/ENA and can be filtered by substance type, microbial taxonomic level, and other attributes.</p>
+    <p>
+      <a href="https://maryam-hkiabi.shinyapps.io/shiny-scripts/" target="_blank" style="display:inline-block; background:#5e81ac; color:#fff; padding:10px 20px; border-radius:6px; text-decoration:none; margin-top:15px;">
+        🚀 Launch the Interactive R Shiny App
+      </a>
+    </p>
+  </div>
+
+  <h1>Oral Microbiome Studies with Associated Data</h1>
+
+  <div class="visualizations">
+    <div class="plot" id="substance-chart"></div>
+    <div class="plot" id="bacteria-chart"></div>
+  </div>
+
+  <div class="filters">
+    <label for="species-filter">Species:</label>
+    <select id="species-filter"><option value="">All</option></select>
+
+    <label for="substance-filter">Substance:</label>
+    <select id="substance-filter"><option value="">All</option></select>
+
+    <label for="subtype-filter">Substance Subtype:</label>
+    <select id="subtype-filter"><option value="">All</option></select>
+
+    <label for="bacteria-level-filter">Bacteria Level:</label>
+    <select id="bacteria-level-filter">
+      <option value="">All</option>
+      <option value="Phylum">Phylum</option>
+      <option value="Genus">Genus</option>
+      <option value="Strain">Strain</option>
+    </select>
+
+    <label for="bacteria-filter">Bacteria:</label>
+    <select id="bacteria-filter"><option value="">All</option></select>
+  </div>
+
+  <table id="data-table" class="display">
+    <thead>
+      <tr>
+        <th>Article Title</th>
+        <th>Species</th>
+        <th>Substance</th>
+        <th>Sample Source</th>
+        <th>What Sequenced</th>
+        <th>Higher Abundance</th>
+        <th>Lower Abundance</th>
+        <th>No Difference</th>
+        <th>Final Results</th>
+        <th>NCBI/ENA Link</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
