@@ -1,0 +1,65 @@
+<!DOCTYPE html>
+<html>
+<head>
+  <title>Oral Microbiome Dashboard</title>
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/PapaParse/5.3.2/papaparse.min.js"></script>
+  <link rel="stylesheet" href="https://cdn.datatables.net/1.11.5/css/jquery.dataTables.min.css">
+  <script src="https://cdn.datatables.net/1.11.5/js/jquery.dataTables.min.js"></script>
+  <style>
+    body {
+      font-family: 'Segoe UI', sans-serif;
+      margin: 40px;
+    }
+    h1 {
+      text-align: center;
+    }
+    .filters {
+      margin-bottom: 20px;
+      text-align: center;
+    }
+    .filters select {
+      margin: 0 10px;
+      padding: 5px;
+    }
+    #data-table {
+      width: 100%;
+    }
+  </style>
+</head>
+<body>
+  <h1>Oral Microbiome Studies with Associated Data</h1>
+
+  <div class="filters">
+    <label for="species-filter">Filter by Species:</label>
+    <select id="species-filter">
+      <option value="">All</option>
+    </select>
+
+    <label for="substance-filter">Filter by Substance:</label>
+    <select id="substance-filter">
+      <option value="">All</option>
+    </select>
+  </div>
+
+  <table id="data-table" class="display">
+    <thead>
+      <tr>
+        <th>Article Title</th>
+        <th>Species</th>
+        <th>Substance</th>
+        <th>Sample Source</th>
+        <th>What Sequenced</th>
+        <th>Higher Abundance</th>
+        <th>Lower Abundance</th>
+        <th>No Difference</th>
+        <th>Final Results</th>
+        <th>NCBI/ENA Link</th>
+      </tr>
+    </thead>
+    <tbody></tbody>
+  </table>
+
+  <script src="script.js"></script>
+</body>
+</html>
