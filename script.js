@@ -1,5 +1,5 @@
 $(document).ready(function () {
-  $.get('data/associated_data_clean.csv', function (csv) {
+  $.get('https://raw.githubusercontent.com/Maryam-hkiabi/Oral-Microbiome-Substance-Use-dashboard/refs/heads/main/data/associated_data_clean.csv', function (csv) {
     const data = Papa.parse(csv, { header: true }).data;
 
     // Clear old filters and table content
